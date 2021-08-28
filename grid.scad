@@ -1,20 +1,13 @@
 // This should be the grid ;-D
 
-//difference(){
+length_default = 55;
 
-//    rotate([0,45,0])
-//    cube(10,center=true);
+height_default = 75;
 
-//    translate([0,0,-5])
-//        cube([18,10+0.01,10], center= true);
-//}
-
-length_default=55;
-
-triangle_height_default=4;
-triangle_width_default=2*triangle_height_default;
+triangle_height_default = 4 ;
+triangle_width_default  = 2 * triangle_height_default;
 cut_default=0.5;
-lift=0.5;
+lift_default=0.5;
 e=0.001;
 
 wall_thickness_default = 1.2;
@@ -86,6 +79,7 @@ module lifted_triangle(
     length=length_default,
     triangle_width = triangle_width_default,
     triangle_height = triangle_height_default,
+    lift = lift_default,
 ){
     translate([0,0,lift])
     rotate([-90,0,0])
@@ -136,17 +130,39 @@ module box_solid(
     x = 1,
     y = 1,
     cut = cut_default,
-    length=length_default,
+    length = length_default,
+    height = height_default,
 ){
+    
     difference(){
         translate([e,e,0])
-            cube([x*length-(2*e),y*length-(2*e),75]);
-            grid(
+            cube([x*length-(2*e),y*length-(2*e),height]);
+    
+        grid(
                 x=x,
                 y=y,
                 cut = cut,
                 cut_top=false
                 );
+        // cut left side of box
+        cut_object(
+            length = length*y);
+
+        // cut right side of box
+        translate([length*x,0,0])
+        mirror(v=[1,0,0])
+             cut_object(length = length*y);
+        
+        // cut back of box
+        translate([0,length*y,0])
+        rotate([0,0,-90])
+             cut_object(length = length*x);
+
+        // cut front of box
+        rotate([0,0,-90])
+        mirror(v=[1,0,0])
+             cut_object(length = length*x);
+
     }
 }
 
@@ -176,6 +192,22 @@ module box(
     }
 }
 
-box(x=2,y=3);
-// grid();
-// field();
+module cut_object(
+    length=length_default,
+    height = height_default,
+    diff_bottom = 0.5
+
+){
+    rotate([-90,0,0])
+    linear_extrude(height=length)
+     
+        polygon(
+            [   [-e,0],
+                [-e,-height],
+                [0,-height],
+                [diff_bottom,0]
+            ]
+            );
+}
+
+box(x=1,y=2);
