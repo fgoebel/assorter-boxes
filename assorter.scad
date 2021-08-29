@@ -123,11 +123,11 @@ module box_solid(
     length = length_default,
     height = height_default,
 ){
-    
+
     difference(){
         translate([e,e,0])
             cube([x*length-(2*e),y*length-(2*e),height]);
-    
+
         grid(
                 x=x,
                 y=y,
@@ -142,7 +142,7 @@ module box_solid(
         translate([length*x,0,0])
         mirror(v=[1,0,0])
              cut_object(length = length*y);
-        
+
         // cut back of box
         translate([0,length*y,0])
         rotate([0,0,-90])
@@ -171,9 +171,17 @@ module box(
                 );
 
 
-        translate([wall_thickness/2,wall_thickness/2,wall_thickness/2])
-            resize([x*length-wall_thickness,y*length-wall_thickness,0])
-            box_solid(
+        translate(
+            [   wall_thickness/2,
+                wall_thickness/2,
+                wall_thickness/2
+            ])
+            resize(
+                [   x*length-wall_thickness,
+                    y*length-wall_thickness,
+                    0
+                ])
+            box_solid( // This also reduces the grid repeat intervall and therefore causes holes..
                 x = x,
                 y = y,
                 cut = cut
@@ -190,7 +198,7 @@ module cut_object(
 ){
     rotate([-90,0,0])
     linear_extrude(height=length)
-     
+
         polygon(
             [   [-e,0],
                 [-e,-height],
