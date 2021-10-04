@@ -71,7 +71,7 @@ module lifted_triangle(
     triangle_height = triangle_height_default,
     lift = lift_default,
 ){
-    translate([0,0,lift])
+    translate([0,0,lift-e])
     rotate([-90,0,0])
     linear_extrude(height=length)
         polygon([[-triangle_width/2,0],[0,-triangle_height],[triangle_width/2,0]]);
@@ -128,6 +128,7 @@ module box_solid(
         translate([e,e,0])
             cube([x*length-(2*e),y*length-(2*e),height]);
 
+        translate([0,0,-e])
         grid(
                 x=x,
                 y=y,
