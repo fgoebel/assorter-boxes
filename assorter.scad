@@ -82,7 +82,6 @@ module solid_box(
         cube([(x-1)*pitch+length,(y-1)*pitch +length,remaining_height]);
 }
 
-
 module box(){
     difference(){
         solid_box();
@@ -91,7 +90,6 @@ module box(){
             solid_box(length = length_default - 2* wall_thickness_default);
     }
 }
-
 
 module grid(
   x = x,
@@ -102,8 +100,6 @@ module grid(
   triangle_height = triangle_height_default,
   pitch = pitch_default
 ){
-
-
     difference(){
     translate([-length/2,-length/2,0])
     cube([(x-1)*pitch+length,(y-1)*pitch +length,lift+triangle_height]);
@@ -112,7 +108,6 @@ module grid(
         solid_box(length= length_default + 0.1);     // do we need some added clearence here?
     }
 }
-
 
 box();
 //grid();
