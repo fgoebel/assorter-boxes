@@ -1,28 +1,12 @@
-
-length_default = 55;
-pitch_default = 55 ;
-
-height_default = 75;
-
-triangle_height_default = 4 ;
-triangle_width_default  = 2 * triangle_height_default;
-cut_default=0.5;
-lift_default=0.5;
-e=0.001;
-
-wall_thickness_default = 1.2;
+// Variables
+include <defaults.scad>
+//include <defaults_mini.scad>
 
 x = 2;
 y = 3;
-// bottom
 
 
-handle_width = 30;
-handle_depth = 10;
-
-handle_top_height = 1;
-handle_angle = 45; // degree
-handle_top_distance = 5;
+e=0.001;
 
 module body_form(
 A,B,K,L,height
