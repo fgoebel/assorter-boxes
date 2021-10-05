@@ -4,7 +4,7 @@
 **ADD CONTENT HERE**
 
 ## Todo:
-* Griff/Beschriftung
+* [x] Griff/Beschriftung
 * Stapelfeatures
 * [x] Beschnitt der Box rundherum
 * render_script aktualisieren /fixen

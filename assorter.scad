@@ -16,6 +16,14 @@ x = 2;
 y = 3;
 // bottom
 
+
+handle_width = 30;
+handle_depth = 10;
+
+handle_top_height = 1;
+handle_angle = 45; // degree
+handle_top_distance = 5;
+
 module body_form(
 A,B,K,L,height
 ){
@@ -127,6 +135,14 @@ module box(){
         translate([0,0,wall_thickness_default- lift_default])
             solid_box(length = length_default - 2* wall_thickness_default,bottom=false);
     }
+
+    // add handle
+    translate([
+        -length_default/2+(length_default+(x-1)*pitch_default)/2,
+        -length_default/2+wall_thickness_default,
+        height_default-handle_top_distance
+    ])
+        handle();
 }
 
 module grid(
@@ -179,6 +195,42 @@ module slice() {
         box();
         translate([-length_default/2-10,-length_default/2-10,-5])
         cube([length_default+(x-1)*pitch_default +20 , 1/2*(length_default+(y-1)*pitch_default + 20),height_default+10]);
+    }
+}
+
+module handle(){
+    r = 2;
+    $fa = 1;
+    $fs = 0.4;
+
+    rotate([0,180,0])
+    hull(){
+        hull(){
+            //left corner
+            translate([-handle_width/2,0,0])
+                cube([1,1,handle_top_height ]);
+
+            // right corner
+            translate([handle_width/2,0,0])
+            translate([-1,0,0])
+                cube([1,1,handle_top_height ]);
+
+            // left round corner
+            translate([-handle_width/2,handle_depth])
+            translate([r,-r,0])
+            cylinder(r=r,h=handle_top_height);
+
+            // right round corner
+            translate([handle_width/2,handle_depth])
+            translate([-r,-r,0])
+            cylinder(r=r,h=handle_top_height );
+        }
+
+        // hull anchor
+        height = handle_depth / tan(handle_angle);
+
+        translate([-handle_width/2,0,0])
+            cube([handle_width,0.1,height]);
     }
 }
 
