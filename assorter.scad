@@ -73,6 +73,8 @@ module solid_box(
   triangle_height = triangle_height_default,
   pitch = pitch_default,
   bottom = true,
+  cut_sides = true,
+  fill_pyramid_tip = false,
 ){
     difference(){
     union(){
@@ -84,33 +86,42 @@ module solid_box(
         }
         translate([-length/2,-length/2,lift + triangle_height-e])
             cube([(x-1)*pitch+length,(y-1)*pitch +length,remaining_height]);
+
+        if (fill_pyramid_tip){
+            // fill the gaps inside the pyramids *shrug*
+            translate([-length/2,-length/2,triangle_height+0.1])
+                cube([(x-1)*pitch+length,(y-1)*pitch +length,1]);
+        }
     }
-    // cut left side of box
-    translate([-length/2,-length/2-2,0])
-        cut_object(length = (y-1)*pitch +length +4 );
+    if (cut_sides) {
+        // cut left side of box
+        translate([-length/2,-length/2-2,0])
+            cut_object(length = (y-1)*pitch +length +4 );
 
-    // cut right side of box
-    translate([(x-1)*pitch+length/2,-length/2-2,0])
-    mirror(v=[1,0,0])
-        cut_object(length = (y-1)*pitch +length +4 );
+        // cut right side of box
+        translate([(x-1)*pitch+length/2,-length/2-2,0])
+        mirror(v=[1,0,0])
+            cut_object(length = (y-1)*pitch +length +4 );
 
-    // cut front side of box
-    //translate([(x-1)*pitch+length/2,-length/2-2,0])
-    translate([-length/2-2,-length/2,0])
-    rotate([0,0,-90])
-    mirror(v=[1,0,0])
-        cut_object(length = (x-1)*pitch +length +4 );
+        // cut front side of box
+        //translate([(x-1)*pitch+length/2,-length/2-2,0])
+        translate([-length/2-2,-length/2,0])
+        rotate([0,0,-90])
+        mirror(v=[1,0,0])
+            cut_object(length = (x-1)*pitch +length +4 );
 
-    // cut back side of box
-    translate([-length/2-2,length/2+(y-1)*pitch,0])
-    rotate([0,0,-90])
-        cut_object(length = (x-1)*pitch +length +4 );
+        // cut back side of box
+        translate([-length/2-2,length/2+(y-1)*pitch,0])
+        rotate([0,0,-90])
+            cut_object(length = (x-1)*pitch +length +4 );
+        }
     }
+
 }
 
 module box(){
     difference(){
-        solid_box();
+        solid_box(fill_pyramid_tip=true);
         // inner solid box without the cubed lift on the bottom.. now the wall thickness looks quite okay
         // we have to lower the innter box about lift_default distance again
         translate([0,0,wall_thickness_default- lift_default])
@@ -127,13 +138,20 @@ module grid(
   triangle_height = triangle_height_default,
   pitch = pitch_default
 ){
-
     difference(){
-    translate([-length/2,-length/2,0])
-    cube([(x-1)*pitch+length,(y-1)*pitch +length,lift+triangle_height]);
+    // main body
+        union(){
+            difference(){
+                translate([-length/2,-length/2,0])
+                cube([(x-1)*pitch+length,(y-1)*pitch +length,lift+triangle_height]);
 
-    translate([0,0,-e])
-        solid_box(length= length_default + 0.1);     // do we need some added clearence here?
+                translate([0,0,-e])
+                    solid_box(length= length_default + 0.1, cut_sides = false );     // do we need some added clearence here?
+            }
+        }
+
+    translate([-length/2-1,-length/2-1,triangle_height - cut_default])
+        cube([(x-1)*pitch+length+2,(y-1)*pitch +length + 2,2]);
     }
 }
 
