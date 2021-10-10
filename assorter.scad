@@ -221,6 +221,13 @@ module handle(){
     }
 }
 
+module stack(){
+    // module to preview a stacked box
+    slice();
+    translate([0,0,height_default-handle_top_distance ])
+    slice();
+}
+
         //box();
         //grid();
         slice();
