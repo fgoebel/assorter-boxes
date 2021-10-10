@@ -159,7 +159,7 @@ module grid(
 module cut_object(
     length = length_default,
     height = height_default,
-    diff_bottom = 0.5
+    diff_bottom = diff_bottom_default,
 
 ){
     rotate([-90,0,0])

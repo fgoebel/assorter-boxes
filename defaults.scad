@@ -19,3 +19,5 @@ handle_depth = 10;
 handle_top_height = 1;
 handle_angle = 45; // degree
 handle_top_distance = 5;
+
+diff_bottom_default = 0.5;
