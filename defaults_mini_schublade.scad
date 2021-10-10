@@ -17,6 +17,6 @@ handle_depth = 7;
 
 handle_top_height = 1;
 handle_angle = 45; // degree
-handle_top_distance = 1.5; // etwas zu wenig..
+handle_top_distance = 1.75; // am gedruckten objekt zu prüfen
 
 diff_bottom_default = 0.5;
