@@ -177,9 +177,11 @@ module cut_object(
 module slice() {
     difference(){
         box();
-        rotate([0,0,90])
         translate([-length_default/2-10,-length_default/2-10,-5])
-        cube([length_default+(x-1)*pitch_default +20 , 1/2*(length_default+(y-1)*pitch_default + 20),height_default+10]);
+        cube([
+            1/2*(length_default+(x-1)*pitch_default + 20),
+            length_default+(y-1)*pitch_default +20,
+            height_default+10]);
     }
 }
 
