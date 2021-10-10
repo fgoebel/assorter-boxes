@@ -5,7 +5,7 @@ pitch_default = 35 ;
 
 height_default = 40;
 
-triangle_height_default = 4 ;
+triangle_height_default = 3.5 ;
 triangle_width_default  = 2 * triangle_height_default;
 cut_default=0.5;
 lift_default=0.5;
