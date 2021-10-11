@@ -3,7 +3,7 @@
 length_default = 20 ;
 pitch_default  = 20 ;
 
-height_default = 33; // in theory 35, but then they have to sit perfectly do not block the schublade
+height_default = 33; // in theory 35, but then they have to sit perfectly to not block the schublade
 
 triangle_height_default = 2 ;
 triangle_width_default  = 2 * triangle_height_default;
