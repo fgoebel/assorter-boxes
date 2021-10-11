@@ -1,13 +1,13 @@
 // set of variables for the mini_Schubladenkasten version
 
-length_default = 27;
-pitch_default = 27 ;
+length_default = 30 ;
+pitch_default  = 30 ;
 
 height_default = 33; // in theory 35, but then they have to sit perfectly do not block the schublade
 
 triangle_height_default = 2 ;
 triangle_width_default  = 2 * triangle_height_default;
-cut_default=0.25;
+cut_default=0.75;
 lift_default=0.5;
 
 wall_thickness_default = 1;
