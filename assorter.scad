@@ -13,6 +13,14 @@ y = 3;
 //slice();
 //stack();
 
+function middle(times) = -length_default/2 +(length_default+(times-1)*pitch_default)/2 ;
+left   = -length_default/2 ;
+front  = -length_default/2 ;
+right  =  length_default/2+(x-1)*pitch_default ;
+back   =  length_default/2+(y-1)*pitch_default ;
+bottom =  0;
+top    =  height_default;
+
 module body_form(
 A,B,K,L,height
 ){
@@ -127,7 +135,7 @@ module box(){
 
     // add handle
     translate([
-        -length_default/2+(length_default+(x-1)*pitch_default)/2,
+        middle(x),
         -length_default/2+wall_thickness_default,
         height_default-handle_top_distance
     ])
