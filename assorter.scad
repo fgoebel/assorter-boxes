@@ -1,14 +1,14 @@
 // Variables
 //include <defaults.scad>
 //include <defaults_mini.scad>
-include <defaults_mini_schublade.scad>
+//include <defaults_mini_schublade.scad>
 
 e=0.001;
 
 x = 2;
 y = 3;
 
-box();
+//box();
 //grid();
 //slice();
 //stack();
