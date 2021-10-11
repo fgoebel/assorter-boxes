@@ -127,7 +127,7 @@ module solid_box(
 
 }
 
-module box(){
+module box(handle_enable = true){
     difference(){
         solid_box(fill_pyramid_tip=true);
         // inner solid box without the cubed lift on the bottom.. now the wall thickness looks quite okay
@@ -135,14 +135,15 @@ module box(){
         translate([0,0,wall_thickness_default- lift_default])
             solid_box(length = length_default - 2* wall_thickness_default,bottom=false);
     }
-
-    // add handle
-    translate([
-        middle(x),
-        -length_default/2+wall_thickness_default,
-        height_default-handle_top_distance
-    ])
-        handle();
+    if (handle_enable) {
+        // add handle
+        translate([
+            middle(x),
+            -length_default/2+wall_thickness_default,
+            height_default-handle_top_distance
+        ])
+            handle();
+    }
 }
 
 module grid(
