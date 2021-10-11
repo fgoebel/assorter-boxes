@@ -155,7 +155,7 @@ module grid(
             }
         }
 
-    translate([-length/2-1,-length/2-1,triangle_height - cut_default])
+    translate([-length/2-1,-length/2-1,lift + triangle_height - cut_default])
         cube([(x-1)*pitch+length+2,(y-1)*pitch +length + 2,2]);
     }
 }
