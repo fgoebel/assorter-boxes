@@ -8,7 +8,7 @@ height_default = 75;
 
 triangle_height_default = 4 ;
 triangle_width_default  = 2 * triangle_height_default;
-cut_default=0.5;
+cut_default=2;
 lift_default=0.5;
 
 wall_thickness_default = 1.2;
