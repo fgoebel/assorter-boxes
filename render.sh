@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output_path="stl"
+output_path="stl-normal"
 x_max=4
 y_max=4
 
