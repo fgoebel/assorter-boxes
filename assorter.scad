@@ -21,6 +21,9 @@ back   =  length_default/2+(y-1)*pitch_default ;
 bottom =  0;
 top    =  height_default;
 
+
+grid_height = lift_default + triangle_height_default - cut_default ;
+
 module body_form(
 A,B,K,L,height
 ){
