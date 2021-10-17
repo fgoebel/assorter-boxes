@@ -1,6 +1,7 @@
 #!/bin/bash
 
-output_path="stl-schublade"
+folder_name=$(basename $(pwd))
+output_path="../../stl/$folder_name"
 x_max=4
 y_max=4
 
