@@ -26,12 +26,12 @@ A,B,K,L,height
 ){
     polyhedron(
         points = [
-            [-A,-B, 0],  // 0
-            [ A,-B, 0],   // 1
-            [ A, B, 0],  // 2
-            [-A, B, 0], // 3
+            [-A,-B, 0],       // 0
+            [ A,-B, 0],       // 1
+            [ A, B, 0],       // 2
+            [-A, B, 0],       // 3
             [-K,-L, height],  // 0
-            [ K,-L, height],   // 1
+            [ K,-L, height],  // 1
             [ K, L, height],  // 2
             [-K, L, height]], // 3
         faces = [
