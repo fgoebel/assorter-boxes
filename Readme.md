@@ -1,5 +1,7 @@
 # Assorter boxes and grids
 
+![Example of Assorter Box](docs/example.png)
+
 The folder `src` contains the `openSCAD`-files to create different sized assorter boxes,
 each subfolder contains the files for a more-or-less specific use-case.
 
