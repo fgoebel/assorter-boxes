@@ -124,13 +124,17 @@ module solid_box(
 
 }
 
-module box(handle_enable = true){
+module box(
+    x = x,
+    y = y,
+    handle_enable = true
+){
     difference(){
-        solid_box(fill_pyramid_tip=true);
+        solid_box(x=x,y=y,fill_pyramid_tip=true);
         // inner solid box without the cubed lift on the bottom.. now the wall thickness looks quite okay
         // we have to lower the innter box about lift_default distance again
         translate([0,0,wall_thickness_default- lift_default])
-            solid_box(length = length_default - 2* wall_thickness_default,bottom=false);
+            solid_box(x=x,y=y,length = length_default - 2* wall_thickness_default,bottom=false);
     }
     if (handle_enable) {
         // add handle
@@ -160,7 +164,7 @@ module grid(
                 cube([(x-1)*pitch+length,(y-1)*pitch +length,lift+triangle_height]);
 
                 translate([0,0,-e])
-                    solid_box(length= length_default + 0.1, cut_sides = false );     // do we need some added clearence here?
+                    solid_box(x=x,y=y,length= length_default + 0.1, cut_sides = false );     // do we need some added clearence here?
             }
         }
 
