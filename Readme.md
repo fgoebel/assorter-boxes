@@ -30,3 +30,6 @@ This code is quite messy as I am still learning how to properly use OpenSCAD. So
 I still want to publish this code in this state because I learned a lot from other peoples code.
 If you have some recommendations/Ideas/Issues do not hesitate to write me a message or open an Issue/Pull-Request here.
 I am happy to discuss and learn something new ;-D
+
+## License
+This work is licensed under https://unlicense.org. I'm still very happy if you mention me or link to this repostitory ;-D
